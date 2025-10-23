@@ -1,0 +1,9 @@
+baseurl: "/My-Notes"
+url: "https://TENTHER101.github.io"
+
+# Exclude files from processing
+exclude:
+  - .git/
+  - .github/
+  - README.md
+  - LICENSE
