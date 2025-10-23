@@ -1,13 +1,19 @@
-const CACHE_NAME = 'my-notes-cache-v3';
-const RUNTIME_CACHE = 'runtime-cache-v1';
+const VERSION = '1.0.0';
+const CACHE_NAME = `my-pwa-notes-cache-${VERSION}`;
+const RUNTIME_CACHE = `runtime-cache-${VERSION}`;
+
+// Determine base URL for GitHub Pages
+const BASE_URL = self.location.hostname === 'TENTHER101.github.io' ? '/My-Notes' : '';
 
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/images/icon-192x192.png',
-  '/images/icon-512x512.png',
-  '/offline.html'
+  BASE_URL + '/',
+  BASE_URL + '/index.html',
+  BASE_URL + '/manifest.json',
+  BASE_URL + '/images/icon-192x192.png',
+  BASE_URL + '/images/icon-512x512.png',
+  BASE_URL + '/script.js',
+  BASE_URL + '/paths.js',
+  BASE_URL + '/offline.html'
 ];
 
 // Install: cache static assets and immediately take control

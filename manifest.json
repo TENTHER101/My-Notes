@@ -1,21 +1,33 @@
 {
   "short_name": "My Notes",
-  "name": "My Notes",
-  "id": "/index.html",
+  "name": "My Notes PWA",
+  "id": "/My-Notes/index.html",
   "icons": [
     {
-      "src": "images/icon-192x192.png",
+      "src": "/My-Notes/images/icon-192x192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "images/icon-512x512.png",
+      "src": "/My-Notes/images/icon-512x512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
-  "start_url": "/index.html",
+  "start_url": "/My-Notes/index.html",
+  "scope": "/My-Notes/",
   "display": "standalone",
   "theme_color": "#4285f4",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "A Progressive Web App for creating and managing notes offline",
+  "screenshots": [
+    {
+      "src": "/My-Notes/images/screenshot1.png",
+      "type": "image/png",
+      "sizes": "1080x1920",
+      "form_factor": "narrow"
+    }
+  ]
 }
