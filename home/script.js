@@ -83,8 +83,15 @@ function showToast(message, bgColor = 'bg-gray-800') {
     const toast = document.createElement('div');
     toast.className = `${bgColor} text-white px-6 py-3 rounded-lg shadow-lg transition-opacity duration-300`;
     toast.textContent = message;
-    
-    const container = qs('toast-container');
+    // Ensure a toast container exists (create if missing)
+    let container = qs('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        // Tailwind utility classes for positioning; harmless if Tailwind not loaded
+        container.className = 'fixed bottom-6 right-6 z-50 flex flex-col gap-2';
+        document.body.appendChild(container);
+    }
     container.appendChild(toast);
     
     // Fade in

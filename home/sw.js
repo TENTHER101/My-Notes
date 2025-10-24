@@ -66,9 +66,9 @@ self.addEventListener('fetch', event => {
         cache.put(request, networkResponse.clone());
         return networkResponse;
       } catch (err) {
-        const cached = await caches.match(request);
-        if (cached) return cached;
-        return caches.match('/offline.html');
+  const cached = await caches.match(request);
+  if (cached) return cached;
+  return caches.match(BASE_URL + '/offline.html');
       }
     })());
     return;
@@ -92,7 +92,7 @@ self.addEventListener('fetch', event => {
         const svg = `<?xml version="1.0" encoding="UTF-8"?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23eee'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-family='Arial, Helvetica, sans-serif' font-size='20'>Image unavailable</text></svg>`;
         return new Response(svg, { headers: { 'Content-Type': 'image/svg+xml' } });
       }
-      return caches.match('/offline.html');
+  return caches.match(BASE_URL + '/offline.html');
     }
   })());
 });
