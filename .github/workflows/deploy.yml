@@ -30,3 +30,16 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          branch: gh-pages
+          folder: ./build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
