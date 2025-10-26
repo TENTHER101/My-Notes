@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4285f4"/>
+    <title>My Notes</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192x192.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-4">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">My Notes</h1>
+
+            <div class="mb-4">
+                <input type="text" id="note-title" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Note Title">
+            </div>
+            <div class="mb-4">
+                <textarea id="note-content" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your note..."></textarea>
+            </div>
+            <div class="flex gap-2">
+                <button id="add-note" class="flex-1 bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Add Note</button>
+                <button id="cancel-edit" class="hidden bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-200">Cancel</button>
+            </div>
+
+            <div id="notes-container" class="mt-6">
+                <!-- Notes will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- View Note Modal -->
+    <div id="view-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 mx-4">
+            <div class="flex justify-between items-start">
+                <h2 id="view-title" class="text-xl font-bold">Note title</h2>
+                <button id="view-close" class="text-gray-600 hover:text-gray-800">✕</button>
+            </div>
+            <p id="view-created" class="text-sm text-gray-500 mt-1">Created: —</p>
+            <p id="view-updated" class="text-sm text-gray-500">Last edited: —</p>
+            <hr class="my-4">
+            <div id="view-content" class="whitespace-pre-wrap text-gray-800"></div>
+            <div class="mt-4 text-right">
+                <button id="view-close-2" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</body>
+
+<!-- Toast container (created dynamically if missing; present for a stable DOM target) -->
+<div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2" aria-live="polite" aria-atomic="true"></div>
+</html>
