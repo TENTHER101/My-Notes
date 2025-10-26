@@ -2,18 +2,19 @@ const VERSION = '1.0.0';
 const CACHE_NAME = `my-pwa-notes-cache-${VERSION}`;
 const RUNTIME_CACHE = `runtime-cache-${VERSION}`;
 
-// Determine base URL for GitHub Pages
-const BASE_URL = self.location.hostname === 'TENTHER101.github.io' ? '/My-Notes' : '';
+// Compute the scope (folder) where this service worker is installed.
+// Using the SW script location ensures the cached paths match the served site (works under /My-Notes/home/).
+const SW_SCOPE = new URL('.', self.location).pathname;
 
 const urlsToCache = [
-  BASE_URL + '/',
-  BASE_URL + '/index.html',
-  BASE_URL + '/manifest.json',
-  BASE_URL + '/images/icon-192x192.png',
-  BASE_URL + '/images/icon-512x512.png',
-  BASE_URL + '/script.js',
-  BASE_URL + '/paths.js',
-  BASE_URL + '/offline.html'
+  SW_SCOPE,
+  SW_SCOPE + 'index.html',
+  SW_SCOPE + 'manifest.json',
+  SW_SCOPE + 'images/icon-192x192.png',
+  SW_SCOPE + 'images/icon-512x512.png',
+  SW_SCOPE + 'script.js',
+  SW_SCOPE + 'paths.js',
+  SW_SCOPE + 'offline.html'
 ];
 
 // Install: cache static assets and immediately take control
@@ -68,7 +69,7 @@ self.addEventListener('fetch', event => {
       } catch (err) {
   const cached = await caches.match(request);
   if (cached) return cached;
-  return caches.match(BASE_URL + '/offline.html');
+  return caches.match(SW_SCOPE + 'offline.html');
       }
     })());
     return;
@@ -92,7 +93,7 @@ self.addEventListener('fetch', event => {
         const svg = `<?xml version="1.0" encoding="UTF-8"?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23eee'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-family='Arial, Helvetica, sans-serif' font-size='20'>Image unavailable</text></svg>`;
         return new Response(svg, { headers: { 'Content-Type': 'image/svg+xml' } });
       }
-  return caches.match(BASE_URL + '/offline.html');
+  return caches.match(SW_SCOPE + 'offline.html');
     }
   })());
 });

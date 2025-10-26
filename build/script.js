@@ -3,8 +3,8 @@
 async function registerSW() {
     if (!('serviceWorker' in navigator)) return;
     try {
-        const base = location.hostname === 'TENTHER101.github.io' ? '/My-Notes' : '';
-        const reg = await navigator.serviceWorker.register(`${base}/sw.js`, { scope: base + '/' });
+        // Register service worker relative to the current page so scope matches the `home/` folder
+        const reg = await navigator.serviceWorker.register('./sw.js');
 
         // If there's an update waiting, show the banner
         if (reg.waiting) {

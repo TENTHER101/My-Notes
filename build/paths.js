@@ -1,5 +1,6 @@
-// Base URL for GitHub Pages (when hosted at TENTHER101.github.io/My-Notes)
-const BASE_URL = location.hostname === 'TENTHER101.github.io' ? '/My-Notes' : '';
+// Compute a base path relative to the current location so this works at root or under a subpath.
+// Example: when hosted at https://.../My-Notes/home/, BASE_URL === '/My-Notes/home'
+const BASE_URL = (new URL('.', location)).pathname.replace(/\/$/, '');
 
 // Add base URL to all cache paths
 const urlsToCache = [
