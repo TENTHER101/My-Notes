@@ -1,3 +1,5 @@
+[![.github/workflows/deploy.yml](https://github.com/TENTHER101/My-Notes/actions/workflows/deploy.yml/badge.svg)](https://github.com/TENTHER101/My-Notes/actions/workflows/deploy.yml)
+
 # My PWA Notes App
 
 A Progressive Web App (PWA) for creating, viewing, and managing notes that work offline.
