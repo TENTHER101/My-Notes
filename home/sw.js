@@ -1,4 +1,4 @@
-const VERSION = '1.0.0';
+const VERSION = '1.1.7';
 const CACHE_NAME = `my-pwa-notes-cache-${VERSION}`;
 const RUNTIME_CACHE = `runtime-cache-${VERSION}`;
 
